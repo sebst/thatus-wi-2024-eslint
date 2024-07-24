@@ -51,12 +51,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-
       - name: Checkout code
         uses: actions/checkout@v3
         with:
           ref: ${{ env.fixBranch }}
-
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v6
