@@ -40,6 +40,9 @@ jobs:
           git add .
           git commit -m "Prettier fixes"
           git push -u origin ${{ env.fixBranch }}
+          git pull
+          git checkout ${{ github.head_ref }}
+          git pull
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
