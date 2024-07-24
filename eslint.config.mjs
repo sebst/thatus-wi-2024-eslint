@@ -27,7 +27,7 @@ const allJsExtensionsArray = ["js", "mjs", "cjs", "jsx", "mjsx"];
 const allTsExtensions = allTsExtensionsArray.join(",");
 const allJsExtensions = allJsExtensionsArray.join(",");
 const allExtensions = [...allTsExtensionsArray, ...allJsExtensionsArray].join(
-  ","
+  ",",
 );
 
 const importRules = {
