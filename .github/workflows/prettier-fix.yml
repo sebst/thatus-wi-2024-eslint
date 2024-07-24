@@ -9,6 +9,8 @@ on:
 jobs:
   prettier-fix:
     runs-on: ubuntu-latest
+    env:
+      fixBranch: ${{ github.head_ref }}-prettier-fix
 
     steps:
       - name: Checkout code
@@ -34,10 +36,10 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git checkout -B prettier-fix-branch
+          git checkout -B ${{ env.fixBranch }}
           git add .
           git commit -m "Prettier fixes"
-          git push -u origin prettier-fix-branch
+          git push -u origin ${{ env.fixBranch }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -45,7 +47,7 @@ jobs:
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          branch: prettier-fix-branch
+          branch: ${{ env.fixBranch }}
           base: ${{ github.head_ref }}
           title: "prettier fixes"
           body: "This PR merges Prettier fixes back to the original branch"
