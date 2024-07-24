@@ -3,45 +3,45 @@ name: ESLint Fixer
 on:
   pull_request:
     branches:
-      - '**'
+      - "**"
 
 jobs:
   eslint-fix:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v3
-      with:
-        ref: ${{ github.head_ref }}
-    
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '16'
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.head_ref }}
 
-    - name: Install dependencies
-      run: npm install
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16"
 
-    - name: Run ESLint and fix issues
-      run: npx eslint . --fix
+      - name: Install dependencies
+        run: npm install
 
-    - name: Commit and push changes
-      run: |
-        git config --global user.name "github-actions[bot]"
-        git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git checkout -B eslint-fix-branch
-        git add .
-        git commit -m "ESLint fixes"
-        git push -u origin eslint-fix-branch
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-    
-    - name: Create Pull Request
-      uses: peter-evans/create-pull-request@v5
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        branch: eslint-fix-branch
-        base: ${{ github.head_ref }}
-        title: 'ESLint fixes'
-        body: 'This PR merges ESLint fixes back to the original branch'
+      - name: Run ESLint and fix issues
+        run: npx eslint . --fix
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -B eslint-fix-branch
+          git add .
+          git commit -m "ESLint fixes"
+          git push -u origin eslint-fix-branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: eslint-fix-branch
+          base: ${{ github.head_ref }}
+          title: "ESLint fixes"
+          body: "This PR merges ESLint fixes back to the original branch"
