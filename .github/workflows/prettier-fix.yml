@@ -50,7 +50,7 @@ jobs:
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          branch: ${{ env.fixBranch }}
-          base: ${{ github.head_ref }}
+          base: ${{ env.fixBranch }}
+          branch: ${{ github.head_ref }}
           title: "prettier fixes"
           body: "This PR merges Prettier fixes back to the original branch"
