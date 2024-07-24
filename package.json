@@ -1,0 +1,19 @@
+{
+  "name": "thatus-wi-2024-eslint",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sebst/thatus-wi-2024-eslint.git"
+  },
+  "author": "Bas Steins",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sebst/thatus-wi-2024-eslint/issues"
+  },
+  "homepage": "https://github.com/sebst/thatus-wi-2024-eslint#readme"
+}
