@@ -1,4 +1,4 @@
-name: ESLint Fixer
+name: Prettier Fixer
 
 on:
   pull_request:
@@ -6,7 +6,7 @@ on:
       - "**"
 
 jobs:
-  eslint-fix:
+  prettier-fix:
     runs-on: ubuntu-latest
 
     steps:
@@ -23,17 +23,17 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Run ESLint and fix issues
-        run: npx eslint . --fix
+      - name: Run Prettier and fix issues
+        run: prettier -w
 
       - name: Commit and push changes
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git checkout -B eslint-fix-branch
+          git checkout -B prettier-fix-branch
           git add .
-          git commit -m "ESLint fixes"
-          git push -u origin eslint-fix-branch
+          git commit -m "Prettier fixes"
+          git push -u origin prettier-fix-branch
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -41,7 +41,7 @@ jobs:
         uses: peter-evans/create-pull-request@v5
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
-          branch: eslint-fix-branch
+          branch: prettier-fix-branch
           base: ${{ github.head_ref }}
-          title: "ESLint fixes"
-          body: "This PR merges ESLint fixes back to the original branch"
+          title: "prettier fixes"
+          body: "This PR merges Prettier fixes back to the original branch"
