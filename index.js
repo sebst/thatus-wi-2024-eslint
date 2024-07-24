@@ -5,5 +5,5 @@ let greetingName = "John";
 if (greetingName === "John") {
   console.log("Hello, John!");
 } else {
-  console.log("Hello, World!");
+          console.log("Hello, World!");
 }
