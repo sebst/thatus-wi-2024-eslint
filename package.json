@@ -1,10 +1,8 @@
 {
   "name": "thatus-wi-2024-eslint",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
-    "script": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,10 +15,15 @@
     "url": "https://github.com/sebst/thatus-wi-2024-eslint/issues"
   },
   "homepage": "https://github.com/sebst/thatus-wi-2024-eslint#readme",
-  "devDependencies": {
+  "description": "",
+  "dependencies": {
     "@eslint/js": "^9.7.0",
     "eslint": "^9.7.0",
-    "globals": "^15.8.0",
-    "typescript-eslint": "^7.17.0"
+    "globals": "^15.8.0"
+  },
+  "pperDependencies": {
+    "@eslint/js": "^9.7.0",
+    "eslint": "^9.7.0",
+    "globals": "^15.8.0"
   }
 }
