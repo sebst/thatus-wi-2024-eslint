@@ -34,15 +34,19 @@ jobs:
 
       - name: Commit and push changes
         run: |
+          echo "Setting Git Variables"
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          echo "Checking out a new branch: ${{ env.fixBranch }}"
           git checkout -B ${{ env.fixBranch }}
+          echo "Status:"
+          git status
+          echo "Adding changes"
           git add .
+          echo "Committing changes"
           git commit -m "Prettier fixes"
+          echo "Pushing changes"
           git push -u origin ${{ env.fixBranch }}
-          git pull
-          git checkout ${{ github.head_ref }}
-          git pull
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
