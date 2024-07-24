@@ -28,7 +28,7 @@ jobs:
         run: npm install -G prettier
 
       - name: Run Prettier and fix issues
-        run: prettier -w
+        run: npm run format
 
       - name: Commit and push changes
         run: |
