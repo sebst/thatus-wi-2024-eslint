@@ -11,23 +11,16 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
         with:
           ref: ${{ github.head_ref }}
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v3
+      - name: Prettify code
+        uses: creyD/prettier_action@v4.3
         with:
-          node-version: "16"
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Install prettier
-        run: npm install -G prettier
-
-      - name: Run Prettier and fix issues
-        run: prettier -w
+          # This part is also where you can pass other options, for example:
+          prettier_options: --write **/*.{js,md}
+          only_changed: True
 
       - name: Commit and push changes
         run: |
